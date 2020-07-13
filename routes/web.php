@@ -12,6 +12,7 @@
 */
 
 Route::get('car_rental/{slug?}', 'ViewController@index');
+Route::get('/', 'ViewController@index');
 // Route::get('car_rental/listings', 'ViewController@listings');
 // Route::get('car_rental/testimonials', 'ViewController@testimonials');
 // Route::get('car_rental/about', 'ViewController@about');
@@ -29,7 +30,7 @@ Route::get('/scan_components', 'postController@getComponents');
 
 Auth::routes();
 
-Route::get('/admin', 'HomeController@index');
+Route::get('/admin', 'HomeController@index')->middleware(['auth', 'auth.admin']);
 
 Route::get('/cms/post/', 'postController@getPostsImage');
 

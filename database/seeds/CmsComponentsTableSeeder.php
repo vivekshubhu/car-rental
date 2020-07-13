@@ -14,7 +14,10 @@ class CmsComponentsTableSeeder extends Seeder
     {
         
 
+        \DB::statement('set foreign_key_checks = 0');
         \DB::table('cms_components')->delete();
+        \DB::statement('set foreign_key_checks = 1');
+
         
         \DB::table('cms_components')->insert(array (
             0 => 

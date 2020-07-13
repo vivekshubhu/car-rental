@@ -13,8 +13,10 @@ class CmsPagesTableSeeder extends Seeder
     public function run()
     {
         
-
+        
+        \DB::statement('set foreign_key_checks = 0');
         \DB::table('cms_pages')->delete();
+        \DB::statement('set foreign_key_checks = 1');
         
         \DB::table('cms_pages')->insert(array (
             0 => 

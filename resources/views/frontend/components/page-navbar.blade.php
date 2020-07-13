@@ -34,14 +34,14 @@
                             <li><a href="/car_rental/blog" class="nav-link">Blog</a></li>
                             <li><a href="/car_rental/about" class="nav-link">About</a></li>
                             <li><a href="/car_rental/contact" class="nav-link">Contact</a></li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif -->
                         </ul>
                     </nav>
                 </div>

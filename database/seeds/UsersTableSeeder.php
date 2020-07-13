@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
+use App\Role;
 
 class UsersTableSeeder extends Seeder
 {
@@ -16,31 +18,23 @@ class UsersTableSeeder extends Seeder
 
         \DB::table('users')->delete();
         
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
-                'id' => 1,
-                'name' => 'admin',
-                'email' => 'admin@example.com',
-                'email_verified_at' => NULL,
-                'password' => '$2y$10$XxtuT./GUFH4LW.XVOzeM.B1FKEEg/2YC0LvHkvDjMuiLzbpbls0C',
-                'remember_token' => NULL,
-                'created_at' => '2020-07-02 12:23:24',
-                'updated_at' => '2020-07-02 12:23:24',
-            ),
-            1 => 
-            array (
-                'id' => 2,
-                'name' => 'user',
-                'email' => 'user@email.com',
-                'email_verified_at' => NULL,
-                'password' => '$2y$10$cdz/EKtXy9RbfjNHQG.RaOCda5PIzINPMxMO7t4qSiPqVHSiJo1wG',
-                'remember_token' => NULL,
-                'created_at' => '2020-07-11 08:42:51',
-                'updated_at' => '2020-07-11 08:42:51',
-            ),
-        ));
+        $adminRole = Role::where('name', 'admin')->first();
+        $userRole = Role::where('name', 'user')->first();
+       
+        $admin = User::create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('admin123')
+        ]);
+
+        $user = User::create([
+            'name' => 'user',
+            'email' => 'user@user.com',
+            'password' => bcrypt('user123')
+        ]);
         
-        
+        $admin->roles()->attach($adminRole);
+        $user->roles()->attach($userRole);
+
     }
 }
